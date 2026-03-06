@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --dark-blue: #150474;
+    --electric-blue: #3700ff;
+    --white: #ffffff;
+    /* Increased transparency slightly so you can actually see the image through the blue */
+    --overlay-color: rgba(21, 4, 116, 0.8); 
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; 
+    background-color: var(--dark-blue);
+}
+
+.hero-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* If the URL below still fails, the image might be blocked by your network. 
+       Download it and use: background-image: url('../../bg-students.jpg'); */
+    background: url('https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center;
+    background-size: cover;
+}
+
+.blue-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--overlay-color) 40%, rgba(16, 0, 75, 0.266) 100%);
+    backdrop-filter: blur(5px); /* Slightly increased blur for modern look */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; 
+    text-align: center;
+    color: var(--white);
+    max-width: 900px;
+    padding: 20px;
+}
+
+/* LOGO STYLING */
+.hero-logo {
+    width: 150px; /* Adjust size based on your PNG */
+    height: auto;
+    margin-bottom: 20px;
+    /* Optional: shadow to make the PNG pop */
+    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.3));
+}
+
+h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem); 
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 16px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-login {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-register {
+    background: var(--white);
+    color: var(--dark-blue);
+    border: 2px solid var(--white);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.btn-login:hover {
+    background: var(--white);
+    color: var(--dark-blue);
+}
+
+.btn-register:hover {
+    background: var(--electric-blue);
+    border-color: var(--electric-blue);
+    color: var(--white);
+}

@@ -1,0 +1,279 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+/* Background Image Setup */
+body {
+    background: url("../images/image.png") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* The Blur Layer */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.3); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* LANDSCAPE TRANSFORMATION: Widened the box */
+.login-box {
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+    padding: 40px;
+    width: 95%;
+    max-width: 800px; /* Increased for landscape view */
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Logo and Header */
+.logo img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.logo h2 {
+    color: #333;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* GLOBAL ERROR STYLE - KingLinks Standard */
+div.error-message {
+    display: block !important;
+    visibility: visible !important;
+    background-color: #fff5f5 !important;
+    color: #c53030 !important;
+    padding: 15px !important;
+    margin: 15px 0 !important;
+    border-radius: 8px !important;
+    border-left: 6px solid #fc8181 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    text-align: left !important;
+}
+
+
+
+/* MAKE FORM LANDSCAPE: Two columns for inputs */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ccc;
+    flex: 1 1 45%; /* This makes inputs sit side-by-side */
+    min-width: 250px;
+}
+
+/* Email takes full width to keep layout clean */
+.input-group:nth-child(3) {
+    flex: 1 1 100%;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #333;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    pointer-events: none;
+    color: #999;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: -15px;
+    font-size: 10px;
+    color: #2a0888; 
+}
+
+/* DRAG AND DROP STYLE for .file-upload */
+.file-upload {
+    flex: 1 1 100%;
+    text-align: center;
+    margin: 10px 0 20px 0;
+    padding: 20px;
+    border: 2px dashed #2a0888;
+    border-radius: 8px;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.file-upload:hover {
+    background: #f0f0ff;
+}
+
+.file-upload label {
+    display: block;
+    font-size: 12px;
+    color: #2a0888;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.file-upload input {
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Button & Links */
+.btn {
+    width: 100%;
+    padding: 15px;
+    background: #2a0888;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.extra-links {
+    flex: 1 1 100%;
+    margin-top: 15px;
+}
+
+.extra-links a {
+    text-decoration: none;
+    color: #2a0888;
+    font-size: 13px;
+}
+
+
+.login-card {
+    max-width: 500px; 
+}
+
+/* Ensure login inputs stack nicely but stay clean */
+.full-width {
+    flex: 1 1 100% !important;
+}
+
+.login-card form {
+    flex-direction: column; /* Stack ID and Password vertically */
+    gap: 10px;
+}
+
+/* Motivation: Making the Sign In button stand out */
+.login-card .btn {
+    margin-top: 20px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(42, 8, 136, 0.3);
+}
+
+/* RESPONSIVENESS FOR MOBILE & TABLETS */
+
+@media (max-width: 768px) {
+    /* Allow scrolling on mobile if the form is long */
+    body {
+        overflow-y: auto; 
+        align-items: flex-start; /* Aligns box to top so it's not cut off */
+        padding: 20px 0;
+    }
+
+    .overlay {
+        position: fixed; /* Keep blur fixed even if body scrolls */
+        height: 100vh;
+    }
+
+    .login-box {
+        width: 90%;
+        padding: 30px 20px;
+        margin: auto; /* Centers the box on mobile */
+    }
+
+    /* Force the landscape form to stack vertically on mobile */
+    form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-group {
+        flex: 1 1 100%; /* Each input takes full width */
+        min-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Adjust logo size for smaller screens */
+    .logo img {
+        width: 50px;
+    }
+
+    .logo h2 {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    /* Make the drag & drop area smaller and easier to tap on mobile */
+    .file-upload {
+        padding: 15px;
+        margin: 5px 0 15px 0;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* Extra small screens (iPhone SE, etc.) */
+@media (max-width: 400px) {
+    .login-box {
+        padding: 20px 15px;
+    }
+    
+    .logo h2 {
+        font-size: 12px;
+    }
+}
